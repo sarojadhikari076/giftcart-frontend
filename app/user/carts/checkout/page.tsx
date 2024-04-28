@@ -1,0 +1,101 @@
+'use client'
+import PaymentForm from '@/components/carts/PaymentForm'
+import http from '@/services/http'
+import { Box, Container, Divider, Sheet, Typography, CircularProgress, Stack } from '@mui/joy'
+import { Elements } from '@stripe/react-stripe-js'
+import { StripeElementsOptions, loadStripe } from '@stripe/stripe-js'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string)
+
+type Summary = {
+  subtotal: number
+  shipping: number
+  total: number
+  clientSecret: string
+}
+
+export default function CheckoutPage() {
+  const [loading, setLoading] = useState(true)
+  const [summary, setSummary] = useState<Summary>({
+    subtotal: 0,
+    shipping: 0,
+    total: 0,
+    clientSecret: ''
+  })
+
+  const options: StripeElementsOptions = {
+    mode: 'payment',
+    amount: Math.round(summary.total * 100),
+    capture_method: 'manual',
+    currency: 'gbp',
+    appearance: {
+      theme: 'stripe',
+      variables: { colorPrimaryText: '#f44336' }
+    }
+  }
+
+  useEffect(() => {
+    async function fetchSummary() {
+      try {
+        const response = await http<Summary>('/carts/summary')
+        setSummary(response)
+      } catch (error) {
+        toast.error('Failed to load checkout information')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchSummary()
+  }, [])
+
+  if (loading) return <LoadingCheckout />
+
+  return (
+    <Container maxWidth="sm" sx={{ py: 5 }}>
+      <Sheet
+        variant="outlined"
+        sx={{
+          borderRadius: 'md',
+          p: 2,
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2
+        }}
+      >
+        <Typography level="h3" color="primary">
+          Checkout information
+        </Typography>
+        <Divider />
+        <Box display="grid" gap={1} gridTemplateColumns="1fr 1fr" justifyContent="space-between">
+          <Typography>Subtotal:</Typography>
+          <Typography textAlign="right">£{summary.subtotal}</Typography>
+          <Typography>Shipping:</Typography>
+          <Typography textAlign="right">£{summary.shipping}</Typography>
+          <Typography level="title-lg">Total:</Typography>
+          <Typography level="title-lg" textAlign="right">
+            £{summary.total}
+          </Typography>
+        </Box>
+        <Divider />
+        <Elements stripe={stripePromise} options={options}>
+          <PaymentForm clientSecret={summary.clientSecret} />
+        </Elements>
+      </Sheet>
+    </Container>
+  )
+}
+
+function LoadingCheckout() {
+  return (
+    <Stack alignItems="center" justifyContent="center" gap={2} minHeight="40vh">
+      <CircularProgress />
+      <Typography level="title-lg" textAlign="center">
+        Loading checkout summary...
+      </Typography>
+    </Stack>
+  )
+}

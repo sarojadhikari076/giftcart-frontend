@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   publisher: 'Saroj Adhikari'
 }
 
-function AboutUsPage() {
+export default function AboutUsPage() {
   return (
     <Stack gap={5} pb={5}>
       <AboutHeroSection />
@@ -26,5 +26,3 @@ function AboutUsPage() {
     </Stack>
   )
 }
-
-export default AboutUsPage

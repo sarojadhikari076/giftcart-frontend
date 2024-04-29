@@ -21,7 +21,6 @@ import http from '@/services/http'
 import { User } from '@/types/user'
 import { useAppDispatch } from '@/hooks/useRedux'
 import { updateUser } from '@/redux/appSlice'
-import { setLoggedInUser } from '@/actions/auth.actions'
 
 function LoginForm() {
   const { replace } = useRouter()
@@ -45,7 +44,6 @@ function LoginForm() {
 
         dispatch(updateUser({ isLoggedIn: true, user: response.user, isLoading: false }))
         localStorage.setItem('fresh_harvest_token', response.token)
-        await setLoggedInUser()
 
         toast.success('Logged in successfully')
         replace('/')

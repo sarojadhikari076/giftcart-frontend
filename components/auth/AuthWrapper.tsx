@@ -1,4 +1,4 @@
-import { Box, Container, Sheet, Stack, Typography } from '@mui/joy'
+import { Box, Container, Sheet, Typography } from '@mui/joy'
 import Image from 'next/image'
 
 type AuthWrapperProps = {
@@ -22,10 +22,7 @@ function AuthWrapper({ title, subtitle, children }: AuthWrapperProps) {
           zIndex: 2
         }}
       >
-        <Sheet
-          variant="outlined"
-          sx={{ borderRadius: 'md', p: { xs: 2, lg: 4 }, flex: 1 }}
-        >
+        <Sheet variant="outlined" sx={{ borderRadius: 'md', p: { xs: 2, lg: 4 }, flex: 1 }}>
           <Typography level="h3" color="primary" textAlign="center">
             {title}
           </Typography>
@@ -36,16 +33,8 @@ function AuthWrapper({ title, subtitle, children }: AuthWrapperProps) {
           {children}
         </Sheet>
       </Container>
-      <Box
-        position="absolute"
-        sx={{ inset: 0, zIndex: 1, background: 'rgba(0 0 0 / 0.8)' }}
-      />
-      <Image
-        src="/images/login-bg.jpeg"
-        style={{ objectFit: 'cover' }}
-        alt="Login"
-        fill
-      />
+      <Box position="absolute" sx={{ inset: 0, zIndex: 1, background: 'rgba(0 0 0 / 0.8)' }} />
+      <Image src="/images/login-bg.jpeg" style={{ objectFit: 'cover' }} alt="Login" fill />
     </Box>
   )
 }

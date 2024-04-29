@@ -1,3 +1,4 @@
+'use client'
 import BestSellingProducts from '@/components/home/BestSellingProducts'
 import CategoriesSection from '@/components/home/CategoriesSection'
 import FeaturedProducts from '@/components/home/FeaturedProducts'

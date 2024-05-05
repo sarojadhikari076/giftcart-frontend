@@ -52,7 +52,7 @@ export const mainLeftNavLinks = [
 export const mainRightNavLinks = [
   {
     icon: <ShoppingBag />,
-    href: '/carts',
+    href: '/user/carts',
     label: 'Carts'
   },
   {

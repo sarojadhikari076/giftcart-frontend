@@ -51,7 +51,15 @@ function PreNavbar() {
 
 function MainNavbar() {
   return (
-    <Box bgcolor="common.white" boxShadow="md" py={1} position="sticky" top={0} zIndex={99}>
+    <Box
+      bgcolor="common.white"
+      boxShadow="md"
+      py={1}
+      position="sticky"
+      top={0}
+      zIndex={99}
+      component="nav"
+    >
       <Container
         sx={{
           display: 'flex',

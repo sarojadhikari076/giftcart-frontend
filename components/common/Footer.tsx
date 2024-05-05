@@ -9,7 +9,7 @@ const currentYear = new Date().getFullYear()
 
 export default function Footer() {
   return (
-    <Box bgcolor="neutral.800" py={5}>
+    <Box bgcolor="neutral.800" py={5} component="footer">
       <Container>
         <Box
           display="flex"

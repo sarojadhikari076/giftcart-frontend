@@ -1,6 +1,8 @@
 'use client'
 
 import { contactUsSchema } from '@/schemas/contactUsSchema'
+import http from '@/services/http'
+import { getErrorText } from '@/utils/error'
 
 import {
   Box,
@@ -17,19 +19,25 @@ import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
 
 function ContactUsForm() {
-  const { errors, touched, handleSubmit, resetForm, getFieldProps } = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    },
-    validationSchema: contactUsSchema,
-    onSubmit: () => {
-      toast.success('Message sent successfully')
-      resetForm()
-    }
-  })
+  const { errors, touched, isSubmitting, isValid, handleSubmit, resetForm, getFieldProps } =
+    useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      },
+      validationSchema: contactUsSchema,
+      onSubmit: async (values) => {
+        try {
+          await http('/contacts', { method: 'POST', data: values })
+          toast.success('Message sent successfully')
+          resetForm()
+        } catch (error) {
+          toast.error(getErrorText(error))
+        }
+      }
+    })
 
   return (
     <Stack gap={1} component="form" onSubmit={handleSubmit}>
@@ -61,7 +69,12 @@ function ContactUsForm() {
         />
         <FormHelperText>{touched.message && errors.message}</FormHelperText>
       </FormControl>
-      <Button sx={{ alignSelf: 'start' }} type="submit">
+      <Button
+        sx={{ alignSelf: 'start' }}
+        type="submit"
+        disabled={isSubmitting || !isValid}
+        loading={isSubmitting}
+      >
         Submit
       </Button>
     </Stack>

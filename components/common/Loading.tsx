@@ -17,7 +17,7 @@ function Loading() {
     >
       <CircularProgress color="primary" />
       <Typography level="h4" textAlign="center">
-        Loading your content...
+        Just a second...
       </Typography>
     </Container>
   )

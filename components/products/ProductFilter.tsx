@@ -42,6 +42,11 @@ export default function ProductFilter() {
     router.push(path)
   }
 
+  const resetForm = () => {
+    dispatch(closeModal())
+    router.push('/products')
+  }
+
   useEffect(() => {
     async function fetchSubCategories() {
       const { subCategories } = await http<{ subCategories: string[] }>('/products/sub-categories')
@@ -124,7 +129,7 @@ export default function ProductFilter() {
       <Box flex={1} />
       <Divider />
       <Box display="flex" justifyContent="space-between" gap={2}>
-        <Button variant="plain" sx={{ flex: 1 }} type="reset">
+        <Button variant="plain" sx={{ flex: 1 }} onClick={resetForm}>
           Clear
         </Button>
         <Button sx={{ flex: 2 }} type="submit">

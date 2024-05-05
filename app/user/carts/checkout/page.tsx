@@ -1,6 +1,7 @@
 'use client'
 import PaymentForm from '@/components/carts/PaymentForm'
 import http from '@/services/http'
+import { getErrorText } from '@/utils/error'
 import { Box, Container, Divider, Sheet, Typography, CircularProgress, Stack } from '@mui/joy'
 import { Elements } from '@stripe/react-stripe-js'
 import { StripeElementsOptions, loadStripe } from '@stripe/stripe-js'
@@ -42,7 +43,7 @@ export default function CheckoutPage() {
         const response = await http<Summary>('/carts/summary')
         setSummary(response)
       } catch (error) {
-        toast.error('Failed to load checkout information')
+        toast.error(getErrorText(error))
       } finally {
         setLoading(false)
       }

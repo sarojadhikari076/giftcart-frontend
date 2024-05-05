@@ -25,7 +25,7 @@ export default async function FaqsPage() {
 
   return (
     <Container maxWidth="md" sx={{ py: 5 }}>
-      <Typography level="h3" textAlign="center" color="primary">
+      <Typography level="h3" textAlign="center" color="primary" gutterBottom>
         Frequently Asked Questions
       </Typography>
       <Typography textAlign="center" level="body-sm" mb={3} maxWidth="60ch" mx="auto">

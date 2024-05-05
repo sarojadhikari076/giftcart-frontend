@@ -3,6 +3,7 @@ import { useAppDispatch } from '@/hooks/useRedux'
 import { updateUser } from '@/redux/appSlice'
 import http from '@/services/http'
 import { User } from '@/types/user'
+import { getErrorText } from '@/utils/error'
 import { useEffect } from 'react'
 
 export default function Auth() {
@@ -16,7 +17,7 @@ export default function Auth() {
 
         dispatch(updateUser({ isLoggedIn: true, user, isLoading: false }))
       } catch (error) {
-        console.error('Error fetching user data')
+        console.error(getErrorText(error))
       }
     }
 

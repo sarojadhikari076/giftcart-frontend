@@ -1,3 +1,4 @@
+import ContactInfo from '@/components/contact-us/ContactInfo'
 import ContactUsForm from '@/components/contact-us/ContactUsForm'
 import { Box, Container, Typography } from '@mui/joy'
 import { GoogleMapsEmbed } from '@next/third-parties/google'
@@ -13,15 +14,14 @@ export const metadata: Metadata = {
 
 function ContactUsPage() {
   return (
-    <Container sx={{ py: 3 }}>
+    <Container sx={{ py: { xs: 3, lg: 10 } }}>
       <Container maxWidth="sm">
         <Typography level="h2" textAlign="center" color="primary">
           Contact Us
         </Typography>
-        <Typography level="body-sm" textAlign="center" mb={3}>
-          We are here to help you. If you have any questions or need assistance,
-          please feel free to contact us. Our customer service team is available
-          24/7 to assist you.
+        <Typography level="body-sm" textAlign="center" mb={4}>
+          We are here to help you. If you have any questions or need assistance, please feel free to
+          contact us. Our customer service team is available 24/7 to assist you.
         </Typography>
       </Container>
       <Box
@@ -39,7 +39,10 @@ function ContactUsPage() {
             q="11 Devonshire House, Loughborough, LE11 3DW"
           />
         </Box>
-        <ContactUsForm />
+        <Box flex={1}>
+          <ContactInfo />
+          <ContactUsForm />
+        </Box>
       </Box>
     </Container>
   )

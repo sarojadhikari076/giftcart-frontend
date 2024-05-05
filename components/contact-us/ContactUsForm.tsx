@@ -1,4 +1,6 @@
-import { contactData } from '@/constants/contactData'
+'use client'
+
+import { contactUsSchema } from '@/schemas/contactUsSchema'
 
 import {
   Box,
@@ -9,58 +11,60 @@ import {
   Stack,
   Button,
   Typography,
-  Sheet,
-  Link
+  FormHelperText
 } from '@mui/joy'
+import { useFormik } from 'formik'
+import { toast } from 'react-toastify'
 
 function ContactUsForm() {
+  const { errors, touched, handleSubmit, resetForm, getFieldProps } = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    },
+    validationSchema: contactUsSchema,
+    onSubmit: () => {
+      toast.success('Message sent successfully')
+      resetForm()
+    }
+  })
+
   return (
-    <Box flex={1}>
-      <Box
-        mb={4}
-        display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
-        gap={1}
-      >
-        {contactData.map(({ label, value, icon, link }) => (
-          <Sheet
-            sx={{ p: 1, borderRadius: 'sm' }}
-            variant="outlined"
-            key={label}
-          >
-            <Link
-              href={link}
-              startDecorator={icon}
-              level="title-md"
-              color="neutral"
-              overlay
-              target="_blank"
-            >
-              {label}
-            </Link>
-            <Typography level="body-sm">{value}</Typography>
-          </Sheet>
-        ))}
-      </Box>
-      <Stack gap={1} maxWidth="50rem">
-        <Typography level="title-lg">Please fill out the form below</Typography>
-        <Box display="flex" gap={2} flexWrap="wrap">
-          <FormControl sx={{ flex: 1 }}>
-            <FormLabel>Name</FormLabel>
-            <Input placeholder="Enter your name" />
-          </FormControl>
-          <FormControl sx={{ flex: 1 }}>
-            <FormLabel>Email</FormLabel>
-            <Input placeholder="Enter your email" />
-          </FormControl>
-        </Box>
-        <FormControl>
-          <FormLabel>Message</FormLabel>
-          <Textarea minRows={5} maxRows={8} placeholder="Enter your message" />
+    <Stack gap={1} component="form" onSubmit={handleSubmit}>
+      <Typography level="title-lg">Please fill out the form below</Typography>
+      <Box display="flex" gap={2} flexWrap="wrap">
+        <FormControl sx={{ flex: 1 }} error={Boolean(touched.name && errors.name)}>
+          <FormLabel>Name</FormLabel>
+          <Input placeholder="Enter your name" {...getFieldProps('name')} />
+          <FormHelperText>{touched.name && errors.name}</FormHelperText>
         </FormControl>
-        <Button sx={{ alignSelf: 'start' }}>Submit</Button>
-      </Stack>
-    </Box>
+        <FormControl sx={{ flex: 1 }} error={Boolean(touched.email && errors.email)}>
+          <FormLabel>Email</FormLabel>
+          <Input placeholder="Enter your email" {...getFieldProps('email')} />
+          <FormHelperText>{touched.email && errors.email}</FormHelperText>
+        </FormControl>
+      </Box>
+      <FormControl sx={{ flex: 1 }} error={Boolean(touched.subject && errors.subject)}>
+        <FormLabel>Subject</FormLabel>
+        <Input placeholder="Enter your subject" {...getFieldProps('subject')} />
+        <FormHelperText>{touched.subject && errors.subject}</FormHelperText>
+      </FormControl>
+      <FormControl error={Boolean(touched.message && errors.message)}>
+        <FormLabel>Message</FormLabel>
+        <Textarea
+          minRows={5}
+          maxRows={8}
+          placeholder="Enter your message"
+          {...getFieldProps('message')}
+        />
+        <FormHelperText>{touched.message && errors.message}</FormHelperText>
+      </FormControl>
+      <Button sx={{ alignSelf: 'start' }} type="submit">
+        Submit
+      </Button>
+    </Stack>
   )
 }
 

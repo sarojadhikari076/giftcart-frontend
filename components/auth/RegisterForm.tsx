@@ -2,6 +2,7 @@
 import { registerSchema } from '@/schemas/authSchema'
 import http from '@/services/http'
 import { User } from '@/types/user'
+import { getErrorText } from '@/utils/error'
 import {
   Box,
   Stack,
@@ -42,7 +43,7 @@ function RegisterForm() {
         toast.success('Registered successfully')
         replace('/auth/login')
       } catch (error) {
-        toast.error('Failed to register')
+        toast.error(getErrorText(error))
       }
     }
   })

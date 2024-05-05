@@ -2,6 +2,7 @@
 
 import { changePasswordSchema } from '@/schemas/authSchema'
 import http from '@/services/http'
+import { getErrorText } from '@/utils/error'
 import { Stack, FormControl, FormLabel, Input, Button, Typography, FormHelperText } from '@mui/joy'
 import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
@@ -23,7 +24,7 @@ export default function UpdatePasswordForm() {
         })
         toast.success('Password updated successfully')
       } catch (error) {
-        toast.error('Failed to update password')
+        toast.error(getErrorText(error))
       }
     }
   })

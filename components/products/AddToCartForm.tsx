@@ -1,5 +1,6 @@
 'use client'
 import http from '@/services/http'
+import { getErrorText } from '@/utils/error'
 import { Add, Remove, ShoppingBasket } from '@mui/icons-material'
 import { Box, Button, IconButton, Typography } from '@mui/joy'
 import { useRouter } from 'next/navigation'
@@ -33,7 +34,12 @@ function AddToCartForm({ availableQuantity, productId, name, unit }: AddToCartFo
       >
         <Remove />
       </IconButton>
-      <Typography level="h4" width="1.5ch" textAlign="center">
+      <Typography
+        level="h4"
+        alignItems="baseline"
+        textAlign="center"
+        endDecorator={<Typography level="body-xs">{unit}</Typography>}
+      >
         {quantity}
       </Typography>
       <IconButton
@@ -57,7 +63,11 @@ export function AddToCartButton({ productId, quantity, unit, name }: AddToCartBu
   const isAuthenticated = () => Boolean(localStorage.getItem('fresh_harvest_token'))
 
   async function handleClick() {
-    if (isAuthenticated() === false) return router.push('/auth/login')
+    if (isAuthenticated() === false) {
+      toast.error('Please login to add products to cart')
+      router.push('/auth/login')
+      return
+    }
 
     try {
       setIsLoading(true)
@@ -71,7 +81,7 @@ export function AddToCartButton({ productId, quantity, unit, name }: AddToCartBu
 
       toast.success(`Added ${quantity} ${unit} ${name} to cart`)
     } catch (error) {
-      toast.error('Failed to add to cart')
+      toast.error(getErrorText(error))
     } finally {
       setIsLoading(false)
     }

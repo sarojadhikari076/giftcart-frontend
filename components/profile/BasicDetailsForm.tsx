@@ -2,8 +2,10 @@
 
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
 import { updateUser } from '@/redux/appSlice'
+import { basicDetailsSchema } from '@/schemas/authSchema'
 import http from '@/services/http'
 import { BasicDetails } from '@/types/user'
+import { getErrorText } from '@/utils/error'
 import { Stack, FormControl, FormLabel, Input, Button, Typography, FormHelperText } from '@mui/joy'
 import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
@@ -20,6 +22,7 @@ export default function BasicDetailsForm() {
         address: user?.address || ''
       },
       enableReinitialize: true,
+      validationSchema: basicDetailsSchema,
       onSubmit: async (values) => {
         try {
           const response = await http<{ user: BasicDetails }>('/auth/me', {
@@ -29,7 +32,7 @@ export default function BasicDetailsForm() {
           dispatch(updateUser({ user: response.user, isLoggedIn: true, isLoading: false }))
           toast.success('Basic details updated successfully')
         } catch (error) {
-          toast.error('Failed to update basic details')
+          toast.error(getErrorText(error))
         }
       }
     })

@@ -9,6 +9,7 @@ import NextLink from 'next/link'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import GotoCheckoutButton from './GotoCheckoutButton'
+import { getErrorText } from '@/utils/error'
 
 export default function CartsTable() {
   const [cart, setCart] = useState<Cart | null>(null)
@@ -23,7 +24,7 @@ export default function CartsTable() {
       }))
       toast.success('Product removed from cart')
     } catch (error) {
-      toast.error('Failed to remove product from cart')
+      toast.error(getErrorText(error))
       console.error(error)
     }
   }
@@ -35,7 +36,7 @@ export default function CartsTable() {
         const response = await http<{ cart: Cart }>('/carts')
         setCart(response.cart)
       } catch (error) {
-        toast.error('Failed to load cart')
+        toast.error(getErrorText(error))
         console.error(error)
       } finally {
         setIsLoading(false)

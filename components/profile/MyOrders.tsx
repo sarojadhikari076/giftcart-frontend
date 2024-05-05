@@ -4,6 +4,8 @@ import { Order, StatusMap } from '@/types/order'
 import { Box, Typography, Avatar, Card, Chip, Stack, Divider, CircularProgress } from '@mui/joy'
 import { Fragment, useEffect, useState } from 'react'
 import http from '@/services/http'
+import { toast } from 'react-toastify'
+import { getErrorText } from '@/utils/error'
 
 const statusMap: StatusMap = {
   Delivered: 'success',
@@ -20,7 +22,7 @@ export default function MyOrders() {
         const response = await http<{ orders: Order[] }>('/orders')
         setOrders(response.orders)
       } catch (error) {
-        console.error(error)
+        toast.error(getErrorText(error))
       } finally {
         setLoading(false)
       }

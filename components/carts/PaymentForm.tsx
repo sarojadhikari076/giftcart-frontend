@@ -24,7 +24,7 @@ export default function PaymentForm({ clientSecret }: PaymentFormProps) {
     try {
       const result = await elements.submit()
       if (result.error) {
-        toast.error(result.error.message)
+        return toast.error(result.error.message)
       } else {
         await stripe.confirmPayment({ clientSecret, redirect: 'if_required' })
         await http('/orders', { method: 'POST' })

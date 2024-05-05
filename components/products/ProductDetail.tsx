@@ -28,6 +28,9 @@ function ProductDetail({ product }: { product: Product }) {
           <Chip variant="outlined" color="primary">
             {product.subCategory}
           </Chip>
+          <Chip variant="outlined" color="success">
+            {product.availableQuantity} {product.unit} available
+          </Chip>
         </Box>
         <Typography
           level="h4"
@@ -41,8 +44,8 @@ function ProductDetail({ product }: { product: Product }) {
           £{product.price}
         </Typography>
         <ProductRating rating={product.averageRating} />
-        <Typography level="body-sm">{product.shortDescription}</Typography>
-        <Typography level="body-sm">{product.longDescription}</Typography>
+        <Typography level="body-lg">{product.shortDescription}</Typography>
+        <Typography level="body-lg">{product.longDescription}</Typography>
         <AddToCartForm
           availableQuantity={product.availableQuantity}
           name={product.name}

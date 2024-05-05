@@ -1,7 +1,6 @@
 'use client'
 
 import {
-  Box,
   Stack,
   Typography,
   FormControl,
@@ -21,6 +20,7 @@ import http from '@/services/http'
 import { User } from '@/types/user'
 import { useAppDispatch } from '@/hooks/useRedux'
 import { updateUser } from '@/redux/appSlice'
+import { getErrorText } from '@/utils/error'
 
 function LoginForm() {
   const { replace } = useRouter()
@@ -48,7 +48,8 @@ function LoginForm() {
         toast.success('Logged in successfully')
         replace('/')
       } catch (error) {
-        toast.error('Invalid email or password')
+        console.log(error)
+        toast.error(getErrorText(error))
       }
     }
   })
@@ -64,14 +65,9 @@ function LoginForm() {
         <Input type="password" {...getFieldProps('password')} placeholder="Enter your password" />
         {errors.password && touched.password && <FormHelperText>{errors.password}</FormHelperText>}
       </FormControl>
-      <Box display="flex" justifyContent="space-between" alignItems="center" gap={1}>
-        <FormControl>
-          <Checkbox label="Remember me" />
-        </FormControl>
-        <Link href="/auth/forgot-password" component={NextLink}>
-          Forgot Password?
-        </Link>
-      </Box>
+      <FormControl>
+        <Checkbox label="Remember me" />
+      </FormControl>
       <Button
         size="lg"
         fullWidth

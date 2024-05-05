@@ -1,5 +1,6 @@
 import { Typography, Box, Container, Button } from '@mui/joy'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function MainProduct() {
   return (
@@ -14,27 +15,18 @@ export default function MainProduct() {
         }}
       >
         <Box maxWidth={600}>
-          <Typography
-            level="h1"
-            textColor="common.white"
-            fontSize="3rem"
-            fontWeight={400}
-          >
+          <Typography level="h1" textColor="common.white" fontSize="3rem" fontWeight={400}>
             Fresh Fruits & Vegetables
           </Typography>
           <Typography level="body-lg" mb={2} textColor="neutral.800">
-            Buy fresh and organic fruits and vegetables from our store. You can
-            get the best quality fruits and vegetables at the best price.
+            Buy fresh and organic fruits and vegetables from our store. You can get the best quality
+            fruits and vegetables at the best price.
           </Typography>
-          <Button color="neutral" variant="outlined">
+          <Button color="neutral" variant="outlined" component={Link} href="/products">
             Shop now
           </Button>
         </Box>
-        <Box
-          position="relative"
-          height={{ xs: 350, md: 600 }}
-          width={{ xs: 350, md: 600 }}
-        >
+        <Box position="relative" height={{ xs: 350, md: 600 }} width={{ xs: 350, md: 600 }}>
           <Image
             src="/images/main-product.png"
             alt="Main product"

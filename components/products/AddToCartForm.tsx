@@ -60,10 +60,9 @@ export function AddToCartButton({ productId, quantity, unit, name }: AddToCartBu
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const isAuthenticated = () => Boolean(localStorage.getItem('fresh_harvest_token'))
-
   async function handleClick() {
-    if (isAuthenticated() === false) {
+    const token = localStorage.getItem('fresh_harvest_token')
+    if (token === null) {
       toast.error('Please login to add products to cart')
       router.push('/auth/login')
       return

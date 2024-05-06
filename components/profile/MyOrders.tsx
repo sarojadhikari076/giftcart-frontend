@@ -101,7 +101,7 @@ function ProductCard({ product, quantity }: { product: Product; quantity: number
             {product.unit}
           </Typography>
           <Typography level="title-sm" ml="auto">
-            £{product.price * quantity}
+            £{(product.price * quantity).toFixed(2)}
           </Typography>
         </Box>
         <Typography level="body-xs">{product.shortDescription}</Typography>

@@ -15,7 +15,7 @@ function ProductDetail({ product }: { product: Product }) {
     >
       <Box position="relative" width={1} height={1}>
         <Image
-          src={product.thumbnail}
+          src={'/images/product-2.jpeg'}
           alt={product.name}
           fill
           style={{ borderRadius: 5, objectFit: 'cover' }}
@@ -24,10 +24,7 @@ function ProductDetail({ product }: { product: Product }) {
       <Stack gap={1} flex={1}>
         <Typography level="h2">{product.name}</Typography>
         <Box display="flex" gap={1} textTransform="capitalize">
-          <Chip variant="outlined">{product.category}</Chip>
-          <Chip variant="outlined" color="primary">
-            {product.subCategory}
-          </Chip>
+          <Chip variant="outlined">{product.category.name}</Chip>
           <Chip variant="outlined" color="success">
             {product.availableQuantity} {product.unit} available
           </Chip>
@@ -50,7 +47,7 @@ function ProductDetail({ product }: { product: Product }) {
           availableQuantity={product.availableQuantity}
           name={product.name}
           unit={product.unit}
-          productId={product._id}
+          productId={product.id}
         />
       </Stack>
     </Box>

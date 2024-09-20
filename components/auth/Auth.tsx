@@ -11,7 +11,7 @@ export default function Auth() {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const { user } = await http<{ user: User }>('/auth/me', {
+        const user = await http<User>('/auth/me', {
           method: 'GET'
         })
 
@@ -21,7 +21,7 @@ export default function Auth() {
       }
     }
 
-    const token = localStorage.getItem('fresh_harvest_token')
+    const token = localStorage.getItem('gift_cart_token')
     if (token) {
       fetchUser()
     }

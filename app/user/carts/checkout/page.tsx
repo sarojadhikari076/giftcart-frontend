@@ -12,7 +12,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as st
 
 type Summary = {
   subtotal: number
-  shipping: number
+  shippingFee: number
   total: number
   clientSecret: string
 }
@@ -21,7 +21,7 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(true)
   const [summary, setSummary] = useState<Summary>({
     subtotal: 0,
-    shipping: 0,
+    shippingFee: 0,
     total: 0,
     clientSecret: ''
   })
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
           <Typography>Subtotal:</Typography>
           <Typography textAlign="right">£{summary.subtotal}</Typography>
           <Typography>Shipping:</Typography>
-          <Typography textAlign="right">£{summary.shipping}</Typography>
+          <Typography textAlign="right">£{summary.shippingFee}</Typography>
           <Typography level="title-lg">Total:</Typography>
           <Typography level="title-lg" textAlign="right">
             £{summary.total}

@@ -28,7 +28,7 @@ const initialState: AppState = {
 }
 
 const appSlice = createSlice({
-  name: 'fresh-harvest-app',
+  name: 'gift-cart-app',
   initialState,
   reducers: {
     openModal(state, action: PayloadAction<Modal>) {

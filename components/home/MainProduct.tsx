@@ -15,12 +15,12 @@ export default function MainProduct() {
         }}
       >
         <Box maxWidth={600}>
-          <Typography level="h1" textColor="common.white" fontSize="3rem" fontWeight={400}>
-            Fresh Fruits & Vegetables
+          <Typography level="h1" textColor="common.white" fontSize="3rem" fontWeight={600}>
+            New Arrival
           </Typography>
           <Typography level="body-lg" mb={2} textColor="neutral.800">
-            Buy fresh and organic fruits and vegetables from our store. You can get the best quality
-            fruits and vegetables at the best price.
+            Buy new arrival electronics, groceries, and more at the best price. We provide the best
+            quality products at the best price. Shop now!
           </Typography>
           <Button color="neutral" variant="outlined" component={Link} href="/products">
             Shop now

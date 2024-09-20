@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title: `${product.name}`,
     description: product.shortDescription,
-    keywords: product.subCategory,
+    keywords: product.tags.join(', '),
     creator: 'Saroj Adhikari',
     publisher: 'Saroj Adhikari'
   }

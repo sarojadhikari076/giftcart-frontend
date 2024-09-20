@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 }
 
 export default async function FaqsPage() {
-  const { faqs } = await http<{ faqs: Faq[] }>('/faqs', {
+  const faqs = await http<Faq[]>('/faqs', {
     method: 'GET'
   })
 
@@ -34,7 +34,7 @@ export default async function FaqsPage() {
       </Typography>
       <AccordionGroup variant="outlined" sx={{ borderRadius: 'md' }}>
         {faqs.map((faq) => (
-          <Accordion key={faq._id}>
+          <Accordion key={faq.id}>
             <AccordionSummary>
               <Typography level="title-md">{faq.question}</Typography>
             </AccordionSummary>

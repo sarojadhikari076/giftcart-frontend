@@ -13,11 +13,11 @@ import Auth from '@/components/auth/Auth'
 
 export const metadata: Metadata = {
   title: {
-    default: 'FreshHarvest | Buy Fresh Fruits and Vegetables Online',
-    template: '%s | FreshHarvest'
+    default: 'GiftCart | Buy anything, anytime from anywhere',
+    template: '%s | GiftCart'
   },
-  description: 'FreshHarvest is a platform to buy fresh fruits and vegetables online',
-  keywords: 'fresh, fruits, vegetables, online, buy',
+  description: 'GiftCart is a one-stop shop for all your grocery needs',
+  keywords: 'grocery, shopping, best deals, affordable, shipping, wide variety, online shopping',
   creator: 'Saroj Adhikari',
   publisher: 'Saroj Adhikari'
 }
@@ -32,7 +32,6 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
         <ReduxProvider>
@@ -44,7 +43,7 @@ export default function RootLayout({
               <Footer />
             </Stack>
             <NavDrawer />
-          <Auth />
+            <Auth />
           </ThemeProvider>
         </ReduxProvider>
         <ToastContainer

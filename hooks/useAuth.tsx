@@ -7,7 +7,7 @@ export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('fresh_harvest_token')
+    const token = localStorage.getItem('gift_cart_token')
     if (token) {
       setIsLoggedIn(true)
     }

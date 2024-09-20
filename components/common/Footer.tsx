@@ -24,7 +24,7 @@ export default function Footer() {
               component={NextLink}
               endDecorator={
                 <Typography level="h2" color="primary">
-                  FreshHarvest
+                  GiftCart
                 </Typography>
               }
             >
@@ -37,7 +37,7 @@ export default function Footer() {
               />
             </Link>
             <Typography level="body-sm" textColor="neutral.500">
-              Always Fresh & Organic
+              Always fast delivery
             </Typography>
           </Box>
           <SubscriptionForm />
@@ -60,11 +60,11 @@ export default function Footer() {
         <Box display="flex" flexWrap="wrap" gap={4} justifyContent="space-between">
           <Box>
             <Typography level="title-md" textColor="primary.500" gutterBottom>
-              About FreshHarvest
+              About GiftCart
             </Typography>
             <Typography level="body-sm" textColor="neutral.500" mb={2} maxWidth={400}>
-              We started our journey in 2005. We provide the best quality fruits and vegetables to
-              our customers. We have the best quality products in the market.
+              GiftCart is a one-stop shop for all your home needs. We provide the best quality
+              products at the best price.
             </Typography>
             <Button variant="outlined" component={NextLink} href="/about-us">
               Learn More
@@ -117,7 +117,7 @@ export default function Footer() {
         </Box>
         <Divider sx={{ my: 4, bgcolor: 'primary.600' }} />
         <Typography level="body-sm" textColor="neutral.500" textAlign="center">
-          &copy; {currentYear} FreshHarvest. All rights reserved.
+          &copy; {currentYear} GiftCart. All rights reserved.
         </Typography>
       </Container>
     </Box>

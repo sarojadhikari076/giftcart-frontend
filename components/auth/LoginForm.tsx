@@ -34,7 +34,7 @@ function LoginForm() {
     validationSchema: loginSchema,
     onSubmit: async ({ email, password }) => {
       try {
-        const response = await http<{ token: string; user: User }>('/auth/login', {
+        const response = await http<{ accessToken: string; user: User }>('/auth/login', {
           method: 'POST',
           data: {
             email,
@@ -43,7 +43,7 @@ function LoginForm() {
         })
 
         dispatch(updateUser({ isLoggedIn: true, user: response.user, isLoading: false }))
-        localStorage.setItem('fresh_harvest_token', response.token)
+        localStorage.setItem('gift_cart_token', response.accessToken)
 
         toast.success('Logged in successfully')
         replace('/')

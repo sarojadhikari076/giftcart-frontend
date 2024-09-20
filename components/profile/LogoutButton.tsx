@@ -15,7 +15,7 @@ export default function LogoutButton() {
   async function handleClick() {
     try {
       setIsLoading(true)
-      localStorage.removeItem('fresh_harvest_token')
+      localStorage.removeItem('gift_cart_token')
       dispatch(logout())
 
       toast.success('Logged out successfully')

@@ -9,7 +9,6 @@ import { AddToCartButton } from '../products/AddToCartForm'
 function ProductCard({ product }: { product: Product }) {
   return (
     <Card
-      key={product.name}
       variant="outlined"
       size="sm"
       sx={{
@@ -26,7 +25,7 @@ function ProductCard({ product }: { product: Product }) {
         }}
       >
         <Image
-          src={product.thumbnail}
+          src={'/images/product-29.jpeg'}
           alt={product.name}
           fill
           style={{
@@ -34,8 +33,8 @@ function ProductCard({ product }: { product: Product }) {
             transition: 'transform 0.2s ease-in-out'
           }}
         />
-        <Chip sx={{ mt: 1 }} color={product.category === 'fruits' ? 'primary' : 'success'}>
-          {product.category}
+        <Chip sx={{ mt: 1 }} color={product.averageRating > 3 ? 'success' : 'warning'}>
+          {product.averageRating} ★
         </Chip>
       </CardOverflow>
       <CardContent
@@ -52,7 +51,7 @@ function ProductCard({ product }: { product: Product }) {
         >
           {product.name}
         </Link>
-        <Typography level="body-xs" mb={2}>
+        <Typography level="body-xs" mb={2} height="5.5ch" overflow="clip">
           {product.shortDescription}
         </Typography>
         <Box flex={1} />
@@ -65,7 +64,7 @@ function ProductCard({ product }: { product: Product }) {
             £{product.price}
           </Typography>
           <AddToCartButton
-            productId={product._id}
+            productId={product.id}
             name={product.name}
             quantity={1}
             unit={product.unit}
@@ -81,7 +80,6 @@ export default ProductCard
 export function HorizontalCard({ product }: { product: Product }) {
   return (
     <Card
-      key={product._id}
       sx={{
         flexDirection: 'row',
         p: 0,
@@ -96,7 +94,7 @@ export function HorizontalCard({ product }: { product: Product }) {
     >
       <Box position="relative" overflow="hidden" height={1} width={120}>
         <Image
-          src={product.thumbnail}
+          src={'/images/product-2.jpeg'}
           alt={product.name}
           fill
           style={{
@@ -104,8 +102,8 @@ export function HorizontalCard({ product }: { product: Product }) {
             transition: 'transform 0.2s ease-in-out'
           }}
         />
-        <Chip sx={{ mt: 1, ml: 1 }} color={product.category === 'fruits' ? 'primary' : 'success'}>
-          {product.category}
+        <Chip sx={{ mt: 1, ml: 1 }} color={product.averageRating > 3 ? 'success' : 'warning'}>
+          {product.averageRating} ★
         </Chip>
       </Box>
       <CardContent sx={{ flex: 1, gap: 1, p: 1, pl: 0 }}>
@@ -128,7 +126,7 @@ export function HorizontalCard({ product }: { product: Product }) {
             £{product.price}
           </Typography>
           <AddToCartButton
-            productId={product._id}
+            productId={product.id}
             name={product.name}
             unit={product.unit}
             quantity={1}

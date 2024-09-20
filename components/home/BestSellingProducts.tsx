@@ -1,13 +1,8 @@
 import { Box, Container, Typography } from '@mui/joy'
 import { HorizontalCard } from '../common/ProductCard'
-import http from '@/services/http'
 import { Product } from '@/types/product'
 
-export default async function BestSellingProducts() {
-  const { products } = await http<{ products: Product[] }>('/products/best-selling', {
-    method: 'GET'
-  })
-
+export default function BestSellingProducts({ products }: { products: Product[] }) {
   return (
     <Container>
       <Container maxWidth="sm" sx={{ mb: 4 }}>
@@ -21,7 +16,7 @@ export default async function BestSellingProducts() {
       </Container>
       <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(22rem, 1fr))" gap={2}>
         {products.map((product) => (
-          <HorizontalCard key={product._id} product={product} />
+          <HorizontalCard key={product.id} product={product} />
         ))}
       </Box>
     </Container>

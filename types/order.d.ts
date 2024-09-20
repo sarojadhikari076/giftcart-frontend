@@ -9,7 +9,7 @@ export type StatusMap = {
 export type Order = {
   id: number
   totalAmount: number
-  status: OrderStatus
+  orderStatus: OrderStatus
   createdAt: string
   products: { product: Product; quantity: number }[]
 }

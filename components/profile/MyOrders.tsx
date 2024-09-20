@@ -19,8 +19,8 @@ export default function MyOrders() {
     async function fetchOrders() {
       try {
         setLoading(true)
-        const response = await http<{ orders: Order[] }>('/orders')
-        setOrders(response.orders)
+        const response = await http<Order[]>('/orders')
+        setOrders(response)
       } catch (error) {
         toast.error(getErrorText(error))
       } finally {
@@ -61,7 +61,7 @@ function OrderCard({ order }: { order: Order }) {
       <Divider />
       <Stack gap={1} flex={1}>
         {order.products.map((item, idx) => (
-          <Fragment key={item.product._id}>
+          <Fragment key={item.product.id}>
             {idx > 0 && <Divider />}
             <ProductCard product={item.product} quantity={item.quantity} />
           </Fragment>
@@ -75,8 +75,8 @@ function OrderCard({ order }: { order: Order }) {
             £{order.totalAmount}
           </Typography>
         </Box>
-        <Chip variant="solid" color={statusMap[order.status]}>
-          {order.status}
+        <Chip variant="solid" color={statusMap[order.orderStatus]} size="sm">
+          {order.orderStatus}
         </Chip>
       </Box>
     </Card>
@@ -87,7 +87,7 @@ function ProductCard({ product, quantity }: { product: Product; quantity: number
   return (
     <Box display="flex" gap={1} alignItems="start">
       <Avatar
-        src={product.thumbnail}
+        src={'/images/product-5.jpeg'}
         alt={product.name}
         sx={{ width: 40, height: 40 }}
         variant="outlined"

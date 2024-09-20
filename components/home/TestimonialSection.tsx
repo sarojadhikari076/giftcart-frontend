@@ -12,28 +12,28 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Junior Smith',
+    name: 'Emily Davis',
     avatar: '/images/avatar-1.jpeg',
-    location: 'Okland, USA',
+    location: 'Birmingham, UK',
     rating: 5,
     message:
-      'This is a great place to buy fresh and organic fruits and vegetables. I am very happy with the quality of the products.'
+      'GiftCart offers an amazing selection of unique and high-quality products. I was impressed by the variety and customer service. Definitely my go-to for thoughtful gifts.'
   },
   {
-    name: 'Vladi Amin',
+    name: 'Lucas Roberts',
     avatar: '/images/avatar-2.avif',
-    location: 'London, UK',
+    location: 'Manchester, UK',
     rating: 4,
     message:
-      'My experience with this store is very good. I am very happy with the quality of the products and the service.'
+      'Great experience with GiftCart! The items were beautifully packaged and arrived on time. The only reason I’m giving 4 stars is that I wish there were more personalisation options.'
   },
   {
-    name: 'John Doe',
+    name: 'Sophia Martinez',
     avatar: '/images/avatar-3.jpeg',
-    location: 'Sydney, Australia',
+    location: 'New York, USA',
     rating: 5,
     message:
-      'While buying fruits and vegetables, I always prefer this store. They provide the best quality products at the best price.'
+      'I’ve been a subscriber to GiftCart for several months now, and every box is a pleasant surprise. The products are carefully curated and of top-notch quality. Highly recommend!'
   }
 ]
 
@@ -43,19 +43,10 @@ function TestimonialSection() {
       <Typography level="h2" textAlign="center" color="primary">
         Testimonials
       </Typography>
-      <Typography
-        level="body-lg"
-        mb={4}
-        textColor="neutral.500"
-        textAlign="center"
-      >
+      <Typography level="body-lg" mb={4} textColor="neutral.500" textAlign="center">
         What our customers say about us
       </Typography>
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(22rem, 1fr))"
-        gap={2}
-      >
+      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(22rem, 1fr))" gap={2}>
         {testimonials.map((testimonial) => (
           <TestimonialCard key={testimonial.name} testimonial={testimonial} />
         ))}

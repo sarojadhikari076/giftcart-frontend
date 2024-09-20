@@ -8,9 +8,8 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description:
-    'Fresh Harvest is an online fruits and vegetables store that delivers fresh produce to your doorstep.',
-  keywords: 'about, us, fresh, harvest, fruits, vegetables, store',
+  description: 'GiftCart is a one-stop shop for all your needs',
+  keywords: 'grocery, shopping, best deals, affordable, fresh, wide variety, online shopping',
   creator: 'Saroj Adhikari',
   publisher: 'Saroj Adhikari'
 }

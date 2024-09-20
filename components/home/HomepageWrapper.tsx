@@ -8,17 +8,24 @@ import MainProduct from '@/components/home/MainProduct'
 import ShowcaseSection from '@/components/home/ShowcaseSection'
 import TestimonialSection from '@/components/home/TestimonialSection'
 import { Stack } from '@mui/joy'
+import { Product } from '@/types/product'
 
-function HomepageWrapper() {
+type HomepageWrapperProps = Readonly<{
+  products: Product[]
+  featuredProducts: Product[]
+  bestProducts: Product[]
+}>
+
+function HomepageWrapper({ products, featuredProducts, bestProducts }: HomepageWrapperProps) {
   return (
     <Stack gap={{ xs: 4, md: 10 }} pb={{ xs: 4, md: 10 }}>
       <HeroSection />
       <FeaturesSection />
-      <ShowcaseSection />
+      <ShowcaseSection products={products} />
       <CategoriesSection />
-      <FeaturedProducts />
+      <FeaturedProducts products={featuredProducts} />
       <MainProduct />
-      <BestSellingProducts />
+      <BestSellingProducts products={bestProducts} />
       <TestimonialSection />
     </Stack>
   )

@@ -27,7 +27,7 @@ type ProductsPageProps = {
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { products } = await http<{ products: Product[] }>('/products', {
+  const products = await http<Product[]>('/products', {
     params: searchParams
   })
 
@@ -56,7 +56,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           >
             {products.length === 0 ? <EmptyState /> : null}
             {products.map((product) => (
-              <ProductCard key={product._id} product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </Box>
         </Box>

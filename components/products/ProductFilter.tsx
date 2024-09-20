@@ -10,33 +10,28 @@ import {
   Option,
   Select,
   Stack,
-  Checkbox,
   Slider,
   Button,
   Divider
 } from '@mui/joy'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import http from '@/services/http'
 import { useAppDispatch } from '@/hooks/useRedux'
 import { closeModal } from '@/redux/appSlice'
 
 export default function ProductFilter() {
   const params = useSearchParams()
   const router = useRouter()
-  const [subCats, setSubCats] = useState<string[]>([])
   const dispatch = useAppDispatch()
 
   const handleSubmit = (formData: FormData) => {
     const query = formData.get('query') as string
     const category = formData.get('category') as string
     const sort = formData.get('sort') as string
-    const subCategories = formData.getAll('subCategories') as string[]
     const priceRange = formData.getAll('priceRange') as string[]
 
-    const path = `/products?query=${query}&category=${category}&sort=${sort}&subCategories=${subCategories.join(
+    const path = `/products?query=${query}&category=${category}&sort=${sort}&priceRange=${priceRange.join(
       ','
-    )}&priceRange=${priceRange.join(',')}`
+    )}`
 
     dispatch(closeModal())
     router.push(path)
@@ -46,15 +41,6 @@ export default function ProductFilter() {
     dispatch(closeModal())
     router.push('/products')
   }
-
-  useEffect(() => {
-    async function fetchSubCategories() {
-      const { subCategories } = await http<{ subCategories: string[] }>('/products/sub-categories')
-      setSubCats(subCategories)
-    }
-
-    fetchSubCategories()
-  }, [])
 
   return (
     <Stack gap={2} component="form" action={handleSubmit}>
@@ -110,22 +96,6 @@ export default function ProductFilter() {
           }
         />
       </FormControl>
-      <Stack gap={1}>
-        <FormLabel>Sub-categories</FormLabel>
-        <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(12rem, 1px))" gap={2}>
-          {subCats.map((sub) => (
-            <Checkbox
-              slotProps={{ label: { sx: { textTransform: 'capitalize' } } }}
-              key={sub}
-              name="subCategories"
-              defaultChecked={params.getAll('subCategories').includes(sub)}
-              value={sub}
-              label={sub}
-              size="sm"
-            />
-          ))}
-        </Box>
-      </Stack>
       <Box flex={1} />
       <Divider />
       <Box display="flex" justifyContent="space-between" gap={2}>

@@ -5,7 +5,7 @@ export default async function http<T>(url: string, options: AxiosRequestConfig =
   let token: string | null = null
 
   if (typeof window === 'object') {
-    token = window.localStorage.getItem('fresh_harvest_token')
+    token = window.localStorage.getItem('gift_cart_token')
   }
 
   const response = await api(url, {

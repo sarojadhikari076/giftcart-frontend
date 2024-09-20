@@ -1,6 +1,7 @@
 'use client'
 
 import http from '@/services/http'
+import { getErrorText } from '@/utils/error'
 import { Button } from '@mui/joy'
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { useRouter } from 'next/navigation'
@@ -32,6 +33,7 @@ export default function PaymentForm({ clientSecret }: PaymentFormProps) {
       }
     } catch (error) {
       console.error(error)
+      toast.error(getErrorText(error))
     } finally {
       setIsLoading(false)
     }

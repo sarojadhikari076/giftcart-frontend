@@ -1,13 +1,18 @@
-type Category = 'fruits' | 'vegetables'
+type Category = {
+  id: number
+  name: string
+  description: string
+  tags: string[]
+}
 
 export type Product = {
-  _id: string
+  id: number
   name: string
   slug: string
+  tags: string[]
   shortDescription: string
   longDescription: string
-  category: Category
-  subCategory: string
+  category: Pick<Category, 'id' | 'name'>
   price: number
   unit: string
   thumbnail: string

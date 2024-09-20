@@ -1,5 +1,5 @@
 import { mainLeftNavLinks, preNavLinks } from '@/constants/routes'
-import { Box, Link, Container, Divider } from '@mui/joy'
+import { Box, Link, Container, Divider, Typography } from '@mui/joy'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import NavToggleButton from '../buttons/NavToggleButton'
@@ -69,10 +69,10 @@ function MainNavbar() {
       >
         <NextLink href="/">
           <Image
-            src="/icons/app-logo.png"
-            width={40}
+            src="/icons/favicon.png"
+            width={32}
             height={32}
-            style={{ objectFit: 'cover', objectPosition: '0 0' }}
+            style={{ objectFit: 'contain', objectPosition: '0 0' }}
             alt="logo"
           />
         </NextLink>

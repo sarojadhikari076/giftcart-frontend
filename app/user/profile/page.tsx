@@ -1,10 +1,9 @@
-import LogoutButton from '@/components/profile/LogoutButton'
 import MyOrders from '@/components/profile/MyOrders'
 import ProfileHeader from '@/components/profile/ProfileHeader'
 import Settings from '@/components/profile/Settings'
-import { Box, Container, Tab, TabList, TabPanel, Tabs, Typography } from '@mui/joy'
+import { Container, Tab, TabList, TabPanel, Tabs } from '@mui/joy'
 
-const tabLists = ['Settings', 'My Orders']
+const tabLists = ['My Orders', 'Settings']
 
 export default function ProfilePage() {
   return (
@@ -17,10 +16,10 @@ export default function ProfilePage() {
           ))}
         </TabList>
         <TabPanel value={0}>
-          <Settings />
+          <MyOrders />
         </TabPanel>
         <TabPanel value={1}>
-          <MyOrders />
+          <Settings />
         </TabPanel>
       </Tabs>
     </Container>

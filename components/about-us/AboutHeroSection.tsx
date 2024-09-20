@@ -18,8 +18,8 @@ function AboutHeroSection() {
             About Us
           </Typography>
           <Typography textColor="neutral.200">
-            Fresh Harvest is an online fruits and vegetables store that delivers
-            fresh produce to your doorstep.
+            GiftCart is a one-stop shop for all your home needs. We provide the best quality
+            products at the best price.
           </Typography>
           <Box display="flex" gap={2}>
             <Button component={Link} href="/products">

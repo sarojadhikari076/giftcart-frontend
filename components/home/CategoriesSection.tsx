@@ -1,5 +1,4 @@
-import { Card, CardOverflow, Container, Typography } from '@mui/joy'
-import { Box, CardContent } from '@mui/material'
+import { Card, CardOverflow, Container, Typography, Box, CardContent } from '@mui/joy'
 import Image from 'next/image'
 
 const categories = [
@@ -29,11 +28,7 @@ const categories = [
 function CategoriesSection() {
   return (
     <Container maxWidth="lg">
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(auto-fill, minmax(22rem, 1fr))"
-        gap={2}
-      >
+      <Box display="grid" gridTemplateColumns="repeat(auto-fill, minmax(22rem, 1fr))" gap={2}>
         {categories.map((category) => (
           <Card
             key={category.name}
@@ -46,9 +41,7 @@ function CategoriesSection() {
               p: 0
             }}
           >
-            <CardOverflow
-              sx={{ position: 'relative', overflow: 'hidden', height: 300 }}
-            >
+            <CardOverflow sx={{ position: 'relative', overflow: 'hidden', height: 300 }}>
               <Image
                 src={category.image}
                 alt={category.name}

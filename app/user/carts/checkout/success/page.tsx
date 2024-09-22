@@ -1,4 +1,3 @@
-'use client'
 import { Check } from '@mui/icons-material'
 import { Avatar, Button, ButtonGroup, Container, Typography } from '@mui/joy'
 import Link from 'next/link'

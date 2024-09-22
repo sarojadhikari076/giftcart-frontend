@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useAppSelector } from '@/hooks/useRedux'
 import { useRouter } from 'next/navigation'
 
@@ -11,12 +12,13 @@ function AuthGuard({
   const { isLoading, isLoggedIn } = useAppSelector((state) => state.auth)
   const router = useRouter()
 
-  if (isLoading) {
-    return null
-  }
+  useEffect(() => {
+    if (isLoading === false && isLoggedIn === false) {
+      router.replace('/auth/login')
+    }
+  }, [isLoading, isLoggedIn, router])
 
-  if (isLoggedIn === false) {
-    router.replace('/auth/login')
+  if (isLoading || isLoggedIn === false) {
     return null
   }
 

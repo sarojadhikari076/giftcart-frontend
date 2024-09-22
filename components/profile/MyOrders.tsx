@@ -87,7 +87,7 @@ function ProductCard({ product, quantity }: { product: Product; quantity: number
   return (
     <Box display="flex" gap={1} alignItems="start">
       <Avatar
-        src={'/images/product-5.jpeg'}
+        src={product.thumbnail}
         alt={product.name}
         sx={{ width: 40, height: 40 }}
         variant="outlined"

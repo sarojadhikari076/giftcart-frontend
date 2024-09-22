@@ -15,10 +15,10 @@ function ProductDetail({ product }: { product: Product }) {
     >
       <Box position="relative" width={1} height={1}>
         <Image
-          src={'/images/category-1.jpeg'}
+          src={product.thumbnail}
           alt={product.name}
           fill
-          style={{ borderRadius: 5, objectFit: 'cover' }}
+          style={{ borderRadius: 5, objectFit: 'contain' }}
         />
       </Box>
       <Stack gap={1} flex={1}>

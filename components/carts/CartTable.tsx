@@ -1,8 +1,17 @@
 'use client'
 import http from '@/services/http'
 import { Cart } from '@/types/cart'
-import { Delete } from '@mui/icons-material'
-import { IconButton, Sheet, Link, Typography, Button, Stack, CircularProgress } from '@mui/joy'
+import { Delete, Edit } from '@mui/icons-material'
+import {
+  IconButton,
+  Sheet,
+  Link,
+  Typography,
+  Button,
+  Stack,
+  CircularProgress,
+  ButtonGroup
+} from '@mui/joy'
 import Table from '@mui/joy/Table'
 import Image from 'next/image'
 import NextLink from 'next/link'
@@ -10,10 +19,12 @@ import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import GotoCheckoutButton from './GotoCheckoutButton'
 import { getErrorText } from '@/utils/error'
+import { useRouter } from 'next/navigation'
 
 export default function CartsTable() {
   const [cart, setCart] = useState<Cart[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const router = useRouter()
 
   async function handleDelete(cartId: number) {
     try {
@@ -24,6 +35,10 @@ export default function CartsTable() {
       toast.error(getErrorText(error))
       console.error(error)
     }
+  }
+
+  function handleEdit(productSlug: string) {
+    router.push(`/products/${productSlug}`)
   }
 
   useEffect(() => {
@@ -65,7 +80,7 @@ export default function CartsTable() {
               <tr key={item.id}>
                 <td>
                   <Image
-                    src={'/images/category-1.jpeg'}
+                    src={item.product.thumbnail}
                     alt={item.product.name}
                     width={50}
                     height={50}
@@ -90,14 +105,18 @@ export default function CartsTable() {
                 </td>
                 <td>£{(item.product.price * item.quantity).toFixed(2)}</td>
                 <td>
-                  <IconButton
-                    onClick={() => handleDelete(item.id)}
-                    size="sm"
-                    color="danger"
-                    variant="outlined"
-                  >
-                    <Delete />
-                  </IconButton>
+                  <ButtonGroup variant="soft" spacing={1}>
+                    <IconButton
+                      onClick={() => handleEdit(item.product.slug)}
+                      size="sm"
+                      color="neutral"
+                    >
+                      <Edit />
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(item.id)} size="sm" color="danger">
+                      <Delete />
+                    </IconButton>
+                  </ButtonGroup>
                 </td>
               </tr>
             ))}

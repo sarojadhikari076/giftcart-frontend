@@ -20,7 +20,7 @@ export default function UpdatePasswordForm() {
       try {
         await http('/auth/change-password', {
           method: 'PATCH',
-          data: values
+          data: { ...values, confirmPassword: undefined }
         })
         toast.success('Password updated successfully')
       } catch (error) {

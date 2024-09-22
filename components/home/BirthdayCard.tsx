@@ -42,8 +42,8 @@ function BirthdayCard() {
       toast.success('Code copied to clipboard')
     } else {
       try {
-        const response = await http<string>('/coupons/birthday')
-        setCode(response)
+        const response = await http<{ code: string }>('/coupons/birthday')
+        setCode(response.code)
       } catch (error) {
         console.error(error)
         toast.error(getErrorText(error))

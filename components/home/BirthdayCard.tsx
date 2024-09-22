@@ -28,7 +28,7 @@ function BirthdayCard() {
       }
     }
 
-    if (isLoggedIn && user && user.dateOfBirth) {
+    if (isLoggedIn && user) {
       const isBirthday = isBirthdayWithinNextWeek(user.dateOfBirth)
       if (isBirthday) {
         fetchBirthdayProducts()

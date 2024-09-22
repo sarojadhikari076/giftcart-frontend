@@ -23,6 +23,13 @@ function ProductDetail({ product }: { product: Product }) {
       </Box>
       <Stack gap={1} flex={1}>
         <Typography level="h2">{product.name}</Typography>
+        <Box display="flex" gap={1} flexWrap="wrap">
+          {product.tags.map((tag) => (
+            <Typography key={tag} level="body-sm" color="primary" textTransform="capitalize">
+              #{tag}
+            </Typography>
+          ))}
+        </Box>
         <Box display="flex" gap={1} textTransform="capitalize">
           <Chip variant="outlined">{product.category.name}</Chip>
           <Chip variant="outlined" color="success">

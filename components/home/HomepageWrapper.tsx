@@ -1,4 +1,3 @@
-'use client'
 import BestSellingProducts from '@/components/home/BestSellingProducts'
 import CategoriesSection from '@/components/home/CategoriesSection'
 import FeaturedProducts from '@/components/home/FeaturedProducts'
@@ -9,6 +8,7 @@ import ShowcaseSection from '@/components/home/ShowcaseSection'
 import TestimonialSection from '@/components/home/TestimonialSection'
 import { Stack } from '@mui/joy'
 import { Product } from '@/types/product'
+import BirthdayCard from './BirthdayCard'
 
 type HomepageWrapperProps = Readonly<{
   products: Product[]
@@ -21,6 +21,7 @@ function HomepageWrapper({ products, featuredProducts, bestProducts }: HomepageW
     <Stack gap={{ xs: 4, md: 10 }} pb={{ xs: 4, md: 10 }}>
       <HeroSection />
       <FeaturesSection />
+      <BirthdayCard />
       <ShowcaseSection products={products} />
       <CategoriesSection />
       <FeaturedProducts products={featuredProducts} />

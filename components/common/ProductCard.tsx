@@ -25,7 +25,7 @@ function ProductCard({ product }: { product: Product }) {
         }}
       >
         <Image
-          src={'/images/product-29.jpeg'}
+          src={'/images/category-1.jpeg'}
           alt={product.name}
           fill
           style={{
@@ -94,7 +94,7 @@ export function HorizontalCard({ product }: { product: Product }) {
     >
       <Box position="relative" overflow="hidden" height={1} width={120}>
         <Image
-          src={'/images/product-2.jpeg'}
+          src={'/images/category-1.jpeg'}
           alt={product.name}
           fill
           style={{

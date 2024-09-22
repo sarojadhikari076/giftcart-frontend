@@ -92,7 +92,7 @@ function ProductCard({ product, quantity }: { product: Product; quantity: number
         sx={{ width: 40, height: 40 }}
         variant="outlined"
       />
-      <Box>
+      <Box flex={1}>
         <Box display="flex" alignItems="baseline" justifyContent="space-between" gap={1} mb={1}>
           <Typography level="title-sm">{product.name}</Typography>
           <Typography level="body-sm">

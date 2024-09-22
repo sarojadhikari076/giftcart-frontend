@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const products = await http<Product[]>('/products', {
+  const newArrivals = await http<Product[]>('/products/new-arrivals', {
     method: 'GET'
   })
   const featuredProducts = await http<Product[]>('/products/featured', {
@@ -25,7 +25,7 @@ export default async function Home() {
 
   return (
     <HomepageWrapper
-      products={products}
+      products={newArrivals}
       featuredProducts={featuredProducts}
       bestProducts={bestProducts}
     />

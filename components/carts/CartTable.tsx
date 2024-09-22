@@ -65,7 +65,7 @@ export default function CartsTable() {
               <tr key={item.id}>
                 <td>
                   <Image
-                    src={'/images/product-1.jpeg'}
+                    src={'/images/category-1.jpeg'}
                     alt={item.product.name}
                     width={50}
                     height={50}

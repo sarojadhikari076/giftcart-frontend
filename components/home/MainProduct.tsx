@@ -16,11 +16,11 @@ export default function MainProduct() {
       >
         <Box maxWidth={600}>
           <Typography level="h1" textColor="common.white" fontSize="3rem" fontWeight={600}>
-            New Arrival
+            iPhone 16 - 5G, 1TB
           </Typography>
           <Typography level="body-lg" mb={2} textColor="neutral.800">
-            Buy new arrival electronics, groceries, and more at the best price. We provide the best
-            quality products at the best price. Shop now!
+            Get the latest iPhone 16 with 5G support and 1TB storage at an affordable price. You can
+            also get a discount of 10% on your first purchase.
           </Typography>
           <Button color="neutral" variant="outlined" component={Link} href="/products">
             Shop now
@@ -28,7 +28,7 @@ export default function MainProduct() {
         </Box>
         <Box position="relative" height={{ xs: 350, md: 600 }} width={{ xs: 350, md: 600 }}>
           <Image
-            src="/images/main-product.png"
+            src="/images/iphone-16.png"
             alt="Main product"
             fill
             style={{ objectFit: 'contain' }}
@@ -40,17 +40,20 @@ export default function MainProduct() {
             top={30}
             height={130}
             width={130}
-            bgcolor="common.white"
+            className="linear-gradient"
             borderRadius={100}
             display="flex"
             alignItems="center"
             justifyContent="center"
           >
             <Box display="flex" alignItems="center">
-              <Typography fontSize="3.5rem">£1</Typography>
+              <Typography fontSize="2rem" textColor="common.white">
+                £1299
+              </Typography>
               <Box>
-                <Typography level="title-lg">.50</Typography>
-                <Typography level="body-xs">/kg</Typography>
+                <Typography level="body-xs" textColor="common.white">
+                  /pcs
+                </Typography>
               </Box>
             </Box>
           </Box>

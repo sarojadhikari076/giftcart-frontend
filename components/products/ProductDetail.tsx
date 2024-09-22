@@ -15,7 +15,7 @@ function ProductDetail({ product }: { product: Product }) {
     >
       <Box position="relative" width={1} height={1}>
         <Image
-          src={'/images/product-2.jpeg'}
+          src={'/images/category-1.jpeg'}
           alt={product.name}
           fill
           style={{ borderRadius: 5, objectFit: 'cover' }}

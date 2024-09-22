@@ -1,6 +1,7 @@
 import ProductDetail from '@/components/products/ProductDetail'
 import ReviewForm from '@/components/products/ReviewForm'
 import SimilarProducts from '@/components/products/SimilarProducts'
+import UpdateSearchHistory from '@/components/products/UpdateSearchHistory'
 import UserReviews from '@/components/products/UserReviews'
 import http from '@/services/http'
 import { Product } from '@/types/product'
@@ -40,6 +41,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
   return (
     <Container sx={{ py: 5, display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <UpdateSearchHistory id={product.id} />
       <ProductDetail product={product} />
       <UserReviews />
       <ReviewForm />

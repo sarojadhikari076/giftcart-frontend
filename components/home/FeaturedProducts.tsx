@@ -6,7 +6,7 @@ export default function FeaturedProducts({ products }: { products: Product[] }) 
   return (
     <Container>
       <Typography level="title-lg" mb={2}>
-        Our featured fruits and vegetables
+        Our featured products
       </Typography>
       <Box display="flex" gap={2} className="no-scrollbar">
         {products.map((product) => (

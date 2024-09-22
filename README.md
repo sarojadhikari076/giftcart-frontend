@@ -1,71 +1,73 @@
-# Project information
+# GiftCart Frontend
 
-This is a FreshHarvest web application where people can buy fresh vegetables and fruits online. You can order fresh vegetables and fruits from the comfort of your home. I have used Next.js which is a React framework for building server-side rendered applications. MUI is used for styling the components. The application is deployed on Vercel [here](https://freshharvest-omega.vercel.app/). I have used typescript for type checking.
+## Overview
 
-## Features
+GiftCart Frontend is a React-based application that provides users with an engaging shopping experience on the GiftCart e-commerce platform. It allows customers to register, browse products, manage their shopping cart, and receive personalized birthday discounts.
 
-- User authentication - Users can sign up, log in, and log out of the application.
-- User profile - Users can view and update their profile information.
-- Product list - Users can view a list of products available for purchase.
-- Product search and filter - Users can search for products by name and filter products by category and sub-categories.
-- Product details - Users can view detailed information about a product.
-- Shopping cart - Users can add products to their shopping cart and view the items in their cart.
-- Checkout - Users can enter their shipping information and pay for their order.
-- Order history - Users can view a list of their past orders.
+## Technologies Used
 
-## Technologies and libraries used
+- **Next.js**: A React framework that enables server-side rendering and static site generation for optimal performance and SEO.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that enhances code quality with static types.
+- **Material-UI (MUI)**: A popular React UI framework that provides a set of pre-designed components for faster development.
+- **Redux**: A state management library for managing application state in a predictable way.
+- **Formik**: A library for building forms in React, simplifying form state management and validation.
+- **Yup**: A schema builder for value parsing and validation, commonly used with Formik.
+- **Axios**: A promise-based HTTP client for making API requests.
+- **Stripe**: A payment processing platform for handling secure transactions.
+- **date-fns**: A modern JavaScript date utility library for date manipulation.
+- **React Toastify**: A library for displaying notifications and alerts in a user-friendly manner.
 
-- Next.js (React framework) - Next.js is a React framework for building server-side rendered applications. It is a production-ready framework that allows you to build static, dynamic, and serverless websites and web applications.
+## Getting Started
 
-- MUI (Material-UI) - MUI is a popular React UI framework that provides a wide range of components and styles for building responsive web applications.
+### Prerequisites
 
-- TypeScript - TypeScript is a superset of JavaScript that provides static type checking and other features that help you write more robust code.
+Make sure you have the following installed on your machine:
 
-- Axios - Axios is a popular JavaScript library that allows you to make HTTP requests from the browser and Node.js.
+- Node.js (version 14.x or higher)
+- npm (Node Package Manager)
 
-- React Toastify - React Toastify is a popular library for displaying notifications in React applications.
+### Cloning the Repository
 
-- Formik - Formik is a popular form library for React that helps you manage form state and validation.
-
-- Yup - Yup is a popular library for schema validation in JavaScript.
-
-- React Redux - React Redux is a popular library for managing application state in React applications.
-
-- Redux Toolkit - Redux Toolkit is a popular library for simplifying Redux development.
-
-- Stripe - Stripe is a popular payment processing platform that allows you to accept payments online.
-
-- @stripe/stripe-js - Stripe.js is a JavaScript library that allows you to interact with the Stripe API.
-
-## Installation
-
-1. Clone the repository
+Clone the repository from GitHub:
 
 ```bash
-git clone https://github.com/sarojadhikari076/freshharvest.git
+git clone https://github.com/sarojadhikari076/giftcart-frontend
+cd giftcart-frontend
 ```
 
-2. Install dependencies
+### Installation
+
+Install the dependencies:
 
 ```bash
-cd freshharvest
 npm install
 ```
 
-3. Run the application
+### Configuration
+
+Create a `.env.local` file in the root directory and add the following environment variables:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api
+NEXT_PUBLIC_STRIPE_PUBLIC_KEY=yoursecretstripekey
+```
+
+### Running the Application
+
+Run the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open the application in your browser
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-```bash
-http://localhost:3000
-```
+## Features
 
-## Test payment details
-
-- Card number: 4242 4242 4242 4242
-- Expiry date: 04/28
-- CVC: 424
+- **User Authentication**: Users can register and log in to their accounts.
+- **User Profile**: Users can view and update their profile information.
+- **Product Browsing**: Users can view products, filter by category, and search for products.
+- **Shopping Cart**: Users can add products to their cart, update quantities, and remove items.
+- **Checkout**: Users can enter shipping details and complete the purchase using Stripe.
+- **Birthday Discounts**: Users receive a personalized discount on their birthday.

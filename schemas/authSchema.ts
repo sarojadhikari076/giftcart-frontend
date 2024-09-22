@@ -21,6 +21,8 @@ export const registerSchema = yup.object().shape({
     .required('Phone number is required')
     .min(10, 'Phone number is too short')
     .max(12, 'Phone number is too long'),
+  gender: yup.string().required('Gender is required'),
+  dateOfBirth: yup.string().required('Date of birth is required'),
   password: yup
     .string()
     .required('Password is required')
@@ -53,7 +55,9 @@ export const basicDetailsSchema = yup.object().shape({
     .string()
     .required('Address is required')
     .min(10, 'Address is too short')
-    .max(100, 'Address is too long')
+    .max(100, 'Address is too long'),
+  gender: yup.string().required('Gender is required'),
+  dateOfBirth: yup.string().required('Date of birth is required')
 })
 
 export const changePasswordSchema = yup.object().shape({

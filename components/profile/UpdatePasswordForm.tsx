@@ -18,7 +18,7 @@ export default function UpdatePasswordForm() {
     validateOnMount: false,
     onSubmit: async (values) => {
       try {
-        await http('/auth/me/password', {
+        await http('/auth/change-password', {
           method: 'PATCH',
           data: values
         })
@@ -36,7 +36,12 @@ export default function UpdatePasswordForm() {
       </Typography>
       <FormControl error={Boolean(errors.currentPassword && touched.currentPassword)}>
         <FormLabel>Current Password</FormLabel>
-        <Input type="password" placeholder="********" {...getFieldProps('currentPassword')} />
+        <Input
+          type="password"
+          placeholder="********"
+          autoComplete="new-password"
+          {...getFieldProps('currentPassword')}
+        />
         {errors.currentPassword && touched.currentPassword && (
           <FormHelperText>{errors.currentPassword}</FormHelperText>
         )}
@@ -47,7 +52,12 @@ export default function UpdatePasswordForm() {
         }
       >
         <FormLabel>New Password</FormLabel>
-        <Input type="password" placeholder="********" {...getFieldProps('newPassword')} />
+        <Input
+          type="password"
+          placeholder="********"
+          autoComplete="new-password"
+          {...getFieldProps('newPassword')}
+        />
         {errors.newPassword && touched.newPassword && (
           <FormHelperText>{errors.newPassword}</FormHelperText>
         )}
@@ -58,7 +68,12 @@ export default function UpdatePasswordForm() {
         }
       >
         <FormLabel>Confirm Password</FormLabel>
-        <Input type="password" placeholder="********" {...getFieldProps('confirmPassword')} />
+        <Input
+          type="password"
+          placeholder="********"
+          autoComplete="new-password"
+          {...getFieldProps('confirmPassword')}
+        />
         {errors.confirmPassword && touched.confirmPassword && (
           <FormHelperText>{errors.confirmPassword}</FormHelperText>
         )}

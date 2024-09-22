@@ -10,9 +10,10 @@ import { toast } from 'react-toastify'
 
 type PaymentFormProps = {
   clientSecret: string
+  coupon: string
 }
 
-export default function PaymentForm({ clientSecret }: PaymentFormProps) {
+export default function PaymentForm({ clientSecret, coupon }: PaymentFormProps) {
   const stripe = useStripe()
   const elements = useElements()
   const router = useRouter()
@@ -28,7 +29,7 @@ export default function PaymentForm({ clientSecret }: PaymentFormProps) {
         return toast.error(result.error.message)
       } else {
         await stripe.confirmPayment({ clientSecret, redirect: 'if_required' })
-        await http('/orders', { method: 'POST' })
+        await http('/orders', { method: 'POST', data: { coupon } })
         router.replace('/user/carts/checkout/success')
       }
     } catch (error) {

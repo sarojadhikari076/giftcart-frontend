@@ -34,7 +34,7 @@ export default function ProductFilter() {
     const priceRange = formData.getAll('priceRange') as string[]
 
     const path = `/products?query=${query}&category=${category}&sort=${sort}:asc&priceRange=${priceRange.join(
-      ','
+      '-'
     )}`
 
     dispatch(closeModal())
@@ -111,7 +111,7 @@ export default function ProductFilter() {
           name="priceRange"
           defaultValue={
             params.get('priceRange')
-              ? (params.get('priceRange') as string).split(',').map(Number)
+              ? (params.get('priceRange') as string).split('-').map(Number)
               : [0, 10000]
           }
         />

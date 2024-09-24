@@ -29,7 +29,7 @@ export default function PaymentForm({ clientSecret, coupon }: PaymentFormProps) 
         return toast.error(result.error.message)
       } else {
         await stripe.confirmPayment({ clientSecret, redirect: 'if_required' })
-        await http('/orders', { method: 'POST', data: { coupon } })
+        await http('/orders', { method: 'POST', data: { coupon: coupon || undefined } })
         router.replace('/user/carts/checkout/success')
       }
     } catch (error) {

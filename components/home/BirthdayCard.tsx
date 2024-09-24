@@ -74,11 +74,11 @@ function BirthdayCard() {
           className="linear-gradient"
         >
           <Typography level="h2" mb={1}>
-            Happy {ageOfUser}th Birthday, Saroj Adhikari 🎉!
+            Happy {ageOfUser}th Birthday, {user && user.name} 🎉!
           </Typography>
           <Typography maxWidth="70ch" mb={3}>
-            As your birthday is near, we have a special gift for you. Get special discounts on our
-            recommended products. Hurry up! Offer valid for 7 days.
+            As your birthday is near, we have a special gift for you. Get special 10% discounts on
+            our recommended products. Hurry up! Offer valid for 7 days.
           </Typography>
           <Button
             size="lg"
